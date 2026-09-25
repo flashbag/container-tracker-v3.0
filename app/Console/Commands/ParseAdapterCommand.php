@@ -21,17 +21,7 @@ class ParseAdapterCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $description = 'Search for a container number across all enabled shipping line adapters';
 
     /**
      * Execute the console command.
@@ -44,7 +34,7 @@ class ParseAdapterCommand extends Command
 
         $companiesEnabled = Company::where('enabled', true)->orderBy('priority', 'asc')->get();
 
-        $this->info("Container No. ${containerNumber}");
+        $this->info("Container No. {$containerNumber}");
 
         $this->info("Has " . $companiesEnabled->count() . " companies with enabled adapter");
 

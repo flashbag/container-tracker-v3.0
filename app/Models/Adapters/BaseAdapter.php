@@ -25,6 +25,14 @@ abstract class BaseAdapter
      */
     public function openPage()
     {
+        if (!class_exists(Puppeteer::class)) {
+            throw new \RuntimeException(
+                'The nesk/puphpeteer browser bridge is not installed. It is abandoned and incompatible ' .
+                'with PHP 8 / current Puppeteer; the scraping layer is being replaced by a Node service ' .
+                '(see README, "Browser automation status").'
+            );
+        }
+
         $puppeteer = new Puppeteer();
         $this->browser = $puppeteer->launch([
             'headless' => false,
