@@ -17,17 +17,17 @@ class CompanySeeder extends Seeder
         $companies = [
             [
                 "name" => "APL",
-                "adapter" => "App\Models\Adapters\ParseAdapterApl",
+                "adapter" => "apl",
                 "enabled" => false,
             ],
             [
                 "name" => "CMA CGM",
-                "adapter" => "App\Models\Adapters\ParseAdapterCmaCgm",
+                "adapter" => "cma-cgm",
                 "enabled" => false,
             ],
             [
                 "name" => "CONTAINERSHIPS",
-                "adapter" => "App\Models\Adapters\ParseAdapterContainerships",
+                "adapter" => null,
                 "enabled" => false,
             ],
             [
@@ -38,32 +38,32 @@ class CompanySeeder extends Seeder
             ],
             [
                 "name" => "CSCL",
-                "adapter" => "App\Models\Adapters\ParseAdapterCscl",
+                "adapter" => null,
                 "enabled" => false,
             ],
             [
                 "name" => "EVERGREEN",
-                "adapter" => "App\Models\Adapters\ParseAdapterEvergreen",
+                "adapter" => null,
                 "enabled" => false,
             ],
             [
                 "name" => "HAMBURG SUD",
-                "adapter" => "App\Models\Adapters\ParseAdapterHamburgSud",
+                "adapter" => "hamburg-sud",
                 "enabled" => false,
             ],
             [
                 "name" => "HAPAG LLOYD",
-                "adapter" => "App\Models\Adapters\ParseAdapterHapagLloyd",
+                "adapter" => "hapag-lloyd",
                 "enabled" => false,
             ],
             [
                 "name" => "HYUNDAI",
-                "adapter" => "App\Models\Adapters\ParseAdapterHyundai",
+                "adapter" => "hyundai",
                 "enabled" => false,
             ],
             [
                 "name" => "K-LINE",
-                "adapter" => "App\Models\Adapters\ParseAdapterKLine",
+                "adapter" => "kline",
                 "enabled" => false,
             ],
             [
@@ -73,39 +73,39 @@ class CompanySeeder extends Seeder
             ],
             [
                 "name" => "MSC",
-                "adapter" => "App\Models\Adapters\ParseAdapterMsc",
+                "adapter" => "msc",
                 "enabled" => false,
             ],
             [
                 "name" => "NYK",
-                "adapter" => "App\Models\Adapters\ParseAdapterNyk",
+                "adapter" => null,
                 "enabled" => false,
             ],
             [
                 "name" => "OOCL",
-                "adapter" => "App\Models\Adapters\ParseAdapterOocl",
+                "adapter" => "oocl",
                 "enabled" => false,
                 "priority" => 2
             ],
             [
                 "name" => "SAFMARINE",
-                "adapter" => "App\Models\Adapters\ParseAdapterSafmarine",
+                "adapter" => null,
                 "enabled" => false,
             ],
             [
                 "name" => "SINOKOR",
-                "adapter" => "App\Models\Adapters\ParseAdapterSinokor",
+                "adapter" => null,
                 "enabled" => false,
             ],
             [
                 "name" => "YANG MING",
-                "adapter" => "App\Models\Adapters\ParseAdapterYangMing",
+                "adapter" => "yang-ming",
                 "enabled" => false,
                 "priority" => 1
             ],
             [
                 "name" => "ZIM",
-                "adapter" => "App\Models\Adapters\ParseAdapterZim",
+                "adapter" => "zim",
                 "enabled" => false,
             ],
         ];

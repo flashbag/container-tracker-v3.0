@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Models\Company;
-use App\Models\Adapters\BaseAdapter;
 use App\Services\NodeScraper;
 
 use Illuminate\Console\Command;
@@ -47,10 +46,15 @@ class ParseAdapterCommand extends Command
 
         foreach ($companiesEnabled as $company) {
 
+            if ($company->adapter === null) {
+                $this->warn("Skipping '$company->name': no adapter implemented");
+                continue;
+            }
+
             $this->info("Searching through '$company->name' adapter");
 
             try {
-                $data = $this->runAdapter($scraper, $company->adapter, $containerNumber);
+                $data = $scraper->run($company->adapter, $containerNumber);
             } catch (\Throwable $e) {
                 $this->error("Adapter '$company->name' failed: " . $e->getMessage());
                 continue;
@@ -75,24 +79,6 @@ class ParseAdapterCommand extends Command
             print_r($mergedData);
         }
 
-    }
-
-    /**
-     * Companies carry either a Node adapter key (e.g. "cosco", a file in
-     * scraper/adapters/) or, for carriers not yet ported, a legacy PHP
-     * adapter class name.
-     */
-    protected function runAdapter(NodeScraper $scraper, string $adapter, string $containerNumber): array
-    {
-        if (!class_exists($adapter)) {
-            return $scraper->run($adapter, $containerNumber);
-        }
-
-        /** @var BaseAdapter $legacyAdapter */
-        $legacyAdapter = new $adapter($containerNumber);
-        $legacyAdapter->processToTracking();
-
-        return $legacyAdapter->getData();
     }
 
     protected function runSingleNodeAdapter(NodeScraper $scraper, string $adapterKey, string $containerNumber): int

@@ -63,15 +63,22 @@ exists so the full PHP → Node → browser pipeline can be tested hermetically
 (see `tests/Feature/NodeScraperTest.php`). Set `SCRAPER_CHROMIUM_PATH` to use
 a system-provided Chromium instead of Playwright's downloaded browsers.
 
-### Migration status
+### Adapter status
 
-Carriers are being ported from the old `nesk/puphpeteer` PHP adapters (that
-bridge is abandoned and PHP 8-incompatible; the legacy classes under
-`app/Models/Adapters/` remain only as the selector-flow reference and throw if
-run). Ported so far: **COSCO** and **Maersk** — translated 1:1 from the 2020
-selectors and **not yet verified against the carriers' current sites**. The
-remaining carriers still carry their legacy class name in the `companies`
-table until ported.
+All carrier adapters are ported from the old `nesk/puphpeteer` PHP classes
+(now removed; the 2020 originals live in git history). Every port is a 1:1
+translation of the 2020 selectors and **not yet verified against the
+carriers' current sites**.
+
+| Adapter | Status |
+| --- | --- |
+| `apl`, `cma-cgm`, `cosco`, `kline`, `maersk`, `msc`, `oocl`, `yang-ming`, `zim` | Ported, selectors unverified |
+| `hamburg-sud`, `hapag-lloyd`, `hyundai` | Search flow ported; result extraction was never implemented (WIP in the original too) |
+| CONTAINERSHIPS, CSCL, EVERGREEN, NYK, SAFMARINE, SINOKOR | No adapter (`adapter = null`), never implemented |
+
+Note the carrier landscape has shifted since 2020: Hamburg Süd is now part of
+Maersk, APL tracking is folded into CMA CGM, and K-Line's container business
+(with NYK's) is now ONE — worth curating when re-verifying.
 
 ## Node side (`app-node/`)
 
