@@ -32,7 +32,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 "name" => "COSCO",
-                "adapter" => "App\Models\Adapters\ParseAdapterCosco",
+                "adapter" => "cosco",
                 "enabled" => true,
                 "priority" => 3
             ],
@@ -68,7 +68,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 "name" => "MAERSK",
-                "adapter" => "App\Models\Adapters\ParseAdapterMaersk",
+                "adapter" => "maersk",
                 "enabled" => false,
             ],
             [
