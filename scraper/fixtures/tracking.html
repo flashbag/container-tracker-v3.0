@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fixture Carrier Tracking</title>
+</head>
+<body>
+  <h1>Fixture Carrier</h1>
+
+  <form id="track-form">
+    <input id="tracking-number" type="text" placeholder="Container number">
+    <button id="track-button" type="button">Track</button>
+  </form>
+
+  <table id="results" hidden>
+    <thead>
+      <tr><th>Container</th><th>Type</th><th>Date</th><th>Event</th><th>Place</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    document.getElementById('track-button').addEventListener('click', function () {
+      var number = document.getElementById('tracking-number').value.trim();
+      if (!number) return;
+
+      // Simulate an async backend call before rendering results.
+      setTimeout(function () {
+        var table = document.getElementById('results');
+        var tbody = table.querySelector('tbody');
+        tbody.innerHTML =
+          '<tr>' +
+          '<td class="cell-container">' + number + '</td>' +
+          '<td class="cell-type">40HC</td>' +
+          '<td class="cell-date">2026-09-20 14:32</td>' +
+          '<td class="cell-event">Discharged</td>' +
+          '<td class="cell-place">Rotterdam, NL</td>' +
+          '</tr>';
+        table.hidden = false;
+      }, 150);
+    });
+  </script>
+</body>
+</html>
